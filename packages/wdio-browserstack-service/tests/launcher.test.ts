@@ -383,7 +383,7 @@ describe('onPrepare', () => {
         const service = new BrowserstackLauncher({} as any, caps, config)
         const capabilities = { chromeBrowser: { capabilities: { 'bstack:options': { buildName: 'browserstack wdio build', buildIdentifier: '#${BUILD_NUMBER}' } } } }
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockImplementation(() => { return '1' })
 
         await service.onPrepare(config, capabilities)
@@ -402,7 +402,7 @@ describe('onPrepare', () => {
         const service = new BrowserstackLauncher(options as any, caps, config)
         const capabilities = [{ 'bstack:options': { buildName: 'browserstack wdio build', buildIdentifier: '#${BUILD_NUMBER}' } }, { 'bstack:options': { buildName: 'browserstack wdio build', buildIdentifier: '#${BUILD_NUMBER}' } }]
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockImplementation(() => { return '1' })
 
         await service.onPrepare(config, capabilities)
@@ -419,7 +419,7 @@ describe('onPrepare', () => {
         const service = new BrowserstackLauncher({} as any, caps, config)
         const capabilities = [{ 'bstack:options': { buildIdentifier: '#${BUILD_NUMBER}' } }]
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockImplementation(() => { return '1' })
 
         await service.onPrepare(config, capabilities as any)
@@ -431,7 +431,7 @@ describe('onPrepare', () => {
         const service = new BrowserstackLauncher({ buildIdentifier: '#${BUILD_NUMBER}' } as BrowserstackConfig & Options.Testrunner, caps, config)
         const capabilities = { chromeBrowser: { capabilities: { 'bstack:options': { buildName: 'browserstack wdio build', buildIdentifier: 'test ${BUILD_NUMBER}' } } } }
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockImplementation(() => { return '1' })
 
         await service.onPrepare(config, capabilities)
@@ -446,7 +446,7 @@ describe('onPrepare', () => {
             capabilities: []
         })
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockImplementation(() => { return '1' })
 
         await service.onPrepare(config, capabilities)
@@ -468,7 +468,7 @@ describe('onPrepare', () => {
             capabilities: []
         })
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockImplementation(() => { return '1' })
 
         await service.onPrepare(config, capabilities)
@@ -1037,7 +1037,7 @@ describe('_handleBuildIdentifier', () => {
         }]
         const service = new BrowserstackLauncher(options as any, caps, config)
 
-        vi.spyOn(utils, 'getCiInfo').mockImplementation(() => null)
+        vi.spyOn(utils, 'getCiInfo').mockImplementationOnce(() => null)
         vi.spyOn(service, '_getLocalBuildNumber').mockReturnValueOnce('1')
         vi.spyOn(service, '_updateLocalBuildCache').mockImplementation(() => {})
         service._handleBuildIdentifier(caps)
