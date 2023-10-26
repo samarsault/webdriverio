@@ -1151,6 +1151,7 @@ describe('_handleBuildIdentifier', () => {
         }]
         const service = new BrowserstackLauncher(options as any, caps, config)
         vi.spyOn(service, '_getLocalBuildNumber').mockReturnValueOnce(null)
+        vi.spyOn(utils, 'getCiInfo').mockReturnValueOnce(null)
 
         service._handleBuildIdentifier(caps)
         expect(caps[0]['bstack:options']?.buildIdentifier).toEqual('#${BUILD_NUMBER}')
